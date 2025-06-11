@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar</title>
+    <style>
+        .navbar{
+            background-color: yellow;
+        }
+        ul{
+            padding: 30px 50px;
+        }
+        li{
+            display: inline;  list-style-type: none;
+            font-size: 35px; margin-right: 20px;
+            border-right: 1px solid black;
+        }
+        a{
+            text-decoration: none;  color: black; 
+             padding: 0 20px; margin-right: 5px;
+
+        }
+        .navbar ul li:last-child a{
+            border-right: none;
+        }
+        
+
+        .navbar ul li a:hover{
+            background-color: blue; color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+</body>
+</html>

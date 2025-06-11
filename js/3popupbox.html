@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html>
+    <head>
+         <title>DOM Manipulation and Popup Demo</title>
+        <style>
+            body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            }
+            #demoParagraph {
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            }
+            button {
+            margin-right: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+            }
+            .dynamicSpan {
+            color: blue;
+            font-weight: bold;
+            }
+        </style>
+    </head>
+            <body>
+                        <h3>DOM Manipulation and Popup Demo</h3>
+
+                        <!-- Section for Popup Boxes -->
+                        <h2>Popup Boxes Demo</h2>
+                        <button onclick="showPopups()">Show Popups</button>
+                        <p id="popupResult"></p>
+
+                        <!-- Section for Background Color and DOM Manipulation -->
+                        <h2>Background Color and DOM Manipulation Demo</h2>
+                        <p id="demoParagraph">This is a paragraph to demonstrate DOM changes.</p>
+                        <button onclick="changeBackgroundColor()">Change Background Color</button>
+                        <button onclick="addSpan()">Add Span</button>
+                        <button onclick="removeSpan()">Remove Span</button>
+
+                            <script>
+                                // Function to demonstrate popup boxes
+                                function showPopups() {
+                                // Alert box
+                                alert("This is an alert box!");
+
+                                // Confirm box
+                                let confirmResult = confirm("Do you want to proceed?");
+                                let resultText = confirmResult ? "You clicked OK!" : "You clicked Cancel!";
+                                document.getElementById("popupResult").innerText = resultText;
+
+                                // Prompt box
+                                let userInput = prompt("Please enter your name:", "Guest");
+                                if (userInput !== null) {
+                                    document.getElementById("popupResult").innerText += "\nWelcome, " + userInput + "!";
+                                }
+                                }
+
+                                // Function to change background color of the paragraph
+                                function changeBackgroundColor() {
+                                let paragraph = document.getElementById("demoParagraph");
+                                // Generate a random color
+                                let randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+                                paragraph.style.backgroundColor = randomColor;
+                                }
+
+                                // Function to add a span and prepend text
+                                function addSpan() {
+                                let paragraph = document.getElementById("demoParagraph");
+                                let span = document.createElement("span");
+                                span.className = "dynamicSpan";
+                                span.innerText = " [Dynamic Content]";
+
+                                // Prepend text to the span
+                                let prependedText = document.createTextNode("Prepended: ");
+                                span.insertBefore(prependedText, span.firstChild);
+
+                                // Append span as a child node of the paragraph
+                                paragraph.appendChild(span);
+                                }
+
+                                // Function to remove the span
+                                function removeSpan() {
+                                let paragraph = document.getElementById("demoParagraph");
+                                let span = paragraph.querySelector(".dynamicSpan");
+                                if (span) {
+                                    paragraph.removeChild(span);
+                                } else {
+                                    alert("No span to remove!");
+                                }
+                                }
+                            </script>
+            </body>
+</html>

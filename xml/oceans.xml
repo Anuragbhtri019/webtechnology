@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="oceans.xsl"?>
+<Oceans>
+    <Ocean>
+        <Name>Arctic</Name>
+        <Area>13000</Area>
+        <MeanDepth>1200</MeanDepth>
+    </Ocean>
+    <Ocean>
+        <Name>Atlantic</Name>
+        <Area>87000</Area>
+        <MeanDepth>3900</MeanDepth>
+    </Ocean>
+    <Ocean>
+        <Name>Pacific</Name>
+        <Area>180000</Area>
+        <MeanDepth>4000</MeanDepth>
+    </Ocean>
+    <Ocean>
+        <Name>Indian</Name>
+        <Area>75000</Area>
+        <MeanDepth>3900</MeanDepth>
+    </Ocean>
+    <Ocean>
+        <Name>Southern</Name>
+        <Area>20000</Area>
+        <MeanDepth>4500</MeanDepth>
+    </Ocean>
+</Oceans>

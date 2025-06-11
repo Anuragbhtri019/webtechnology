@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout</title>
+    <style>
+        .container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: blueviolet;
+    height: 100px;
+    text-align: center;
+    line-height: 100px; /* Center text vertically */
+    color: white;
+    font-size: 24px;
+}
+
+.menu {
+    background-color: darkgray;
+    height: 50px;
+    line-height: 50px; /* Center text vertically */
+    color: white;
+    font-size: 18px;
+}
+
+.middle {
+    display: flex;
+    flex: 1; /* Fill remaining height */
+}
+
+.left-side {
+    height: 100%;
+    width: 25%;
+    background-color: brown;
+    padding: 20px;
+    box-sizing: border-box; /* Include padding in width calculation */
+    color: white;
+    font-size: 16px;
+}
+
+.content {
+    height: 100%;
+    width: 50%;
+    background-color: cyan;
+    padding: 20px;
+    box-sizing: border-box; /* Include padding in width calculation */
+    font-size: 16px;
+}
+
+.right-side {
+    height: 100%;
+    width: 25%;
+    background-color: purple;
+    padding: 20px;
+    box-sizing: border-box; /* Include padding in width calculation */
+    color: white;
+    font-size: 16px;
+}
+
+.footer {
+    background-color: darkgray;
+    height: 50px;
+    line-height: 50px; /* Center text vertically */
+    color: white;
+    font-size: 16px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">Header</div>
+        <div class="menu">Menu</div>
+        <div class="middle">
+            <div class="left-side">Left Side</div>
+            <div class="content">Content</div>
+            <div class="right-side">Right Side</div>
+        </div>
+        <div class="footer">Footer</div>
+    </div>
+</body>
+</html>

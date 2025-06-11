@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- Define the root element -->
+    <xs:element name="book">
+        <xs:complexType>
+            <xs:sequence>
+                <!-- Define each child element with its data type and constraints -->
+                <xs:element name="title" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="author" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                
+                <!-- ISBN with pattern restriction for typical ISBN-13 format -->
+                <xs:element name="isbn" minOccurs="1" maxOccurs="1">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:pattern value="\d{3}-\d{1,5}-\d{1,7}-\d{1,7}-\d{1}"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                
+                <xs:element name="publisher" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="edition" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                
+                <!-- Price with decimal restriction -->
+                <xs:element name="price" minOccurs="1" maxOccurs="1">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:decimal">
+                            <xs:minInclusive value="0.00"/>
+                            <xs:fractionDigits value="2"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

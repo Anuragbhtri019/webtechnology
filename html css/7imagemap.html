@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Map Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        img {
+            max-width: 100%;
+            border: 1px solid #333;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Map with Shapes</h1>
+    <p>Click different shapes to visit different websites</p>
+
+    <img src="imagemap.png" usemap="#shapemap" alt="Image Map Example">
+
+    <map name="shapemap">
+        <!-- Rectangle (top-left corner, scaled for 1920x1080) -->
+        <area shape="rect" coords="0,0,480,540" href="https://www.google.com" target="_blank" 
+              alt="Rectangle Area" onclick="alert('You clicked the Rectangle (Google)');">
+
+        <!-- Circle (center, reduced size for 1920x1080) -->
+        <area shape="circle" coords="960,540,120" href="https://www.wikipedia.org" target="_blank" 
+              alt="Circle Area" onclick="alert('You clicked the Circle (Wikipedia)');">
+
+        <!-- Polygon (bottom-right triangle, increased size for 1920x1080) -->
+        <area shape="poly" coords="1200,600,1920,1080,1920,360" href="https://www.github.com" target="_blank" 
+              alt="Polygon Area" onclick="alert('You clicked the Polygon Triangle (GitHub)');">
+    </map>
+
+    <p>
+        Rectangle: Top-left (Google) |
+        Circle: Center (Wikipedia) |
+        Polygon: Bottom-right Triangle (GitHub)
+    </p>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Date and Time </title>
+    <style>
+        /* Body Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #333;
+        }
+
+        /* Clock Styles */
+        .digi-Clock {
+            font-weight: bold;
+            font-size: 50px;
+            text-align: center;
+            color: white;
+            font-family: Arial, sans-serif;
+            border: 2px solid white;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <!-- Clock will be inserted here -->
+    </div>
+
+    <script>
+        // Create the clock element
+        let divClock = document.createElement("div");
+        divClock.classList.add('digi-Clock');
+        document.getElementById("root").appendChild(divClock);
+
+        setInterval(() => {
+            let date = new Date();
+
+            // Arrays for months and days
+            let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+            // Format the date string
+            let digiDate = `${date.getFullYear()}-${months[date.getMonth()]}-${date.getDate()} ${days[date.getDay()]}`;
+
+            // Get hours, minutes, and seconds
+            let hours = date.getHours();
+            let minutes = date.getMinutes();
+            let seconds = date.getSeconds();
+
+            // AM/PM
+            let ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12;  // If hours is 0, change it to 12
+
+            // Pad minutes and seconds with leading zeros if less than 10
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+
+            // Format the time string
+            let digiClock = `${hours}:${minutes}:${seconds} ${ampm}`;
+
+            // Display the date and time in the clock element
+            divClock.innerText = digiDate + ",    " + digiClock;
+        }, 1000); // Update the clock every second
+    </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Object Demonstration</title>
+</head>
+<body>
+  <h3>Object Demonstration</h3>
+ 
+  <script>
+    // Multiple ways to create an object
+    console.log("--- Multiple Ways to Create an Object ---");
+    let obj1 = new Object(); // Using Object constructor
+    let obj2 = {}; // Using object literal
+    let obj3 = Object.create(null); // Using Object.create with null prototype
+    let obj4 = new Object({ name: "John", age: 30 }); // Constructor with initial values
+    console.log("Object 1 (empty, constructor):", obj1);
+    console.log("Object 2 (empty, literal):", obj2);
+    console.log("Object 3 (Object.create):", obj3);
+    console.log("Object 4 (constructor with values):", obj4);
+
+    // User-defined object with an array property to simulate ordered data
+    function TaskList() {
+      this.tasks = ["Buy groceries", "Read book", "Exercise"];
+      this.addTask = function(task) {
+        this.tasks.push(task);
+      };
+    }
+
+    // Create an instance of the user-defined object
+    let myTasks = new TaskList();
+    console.log("--- Initial User-Defined Object ---");
+    console.log("myTasks:", myTasks);
+
+    // Check prototypes of Object
+    console.log("--- Object Prototype ---");
+    console.log("Object prototype:", Object.prototype);
+    console.log("TaskList prototype:", TaskList.prototype);
+    console.log("myTasks prototype:", Object.getPrototypeOf(myTasks));
+
+    // Add data as first element (using array property)
+    myTasks.tasks.unshift("Wake up early");
+    console.log("--- After Adding First Element ---");
+    console.log("myTasks.tasks:", myTasks.tasks);
+
+    // Add data as last element
+    myTasks.tasks.push("Sleep well");
+    console.log("--- After Adding Last Element ---");
+    console.log("myTasks.tasks:", myTasks.tasks);
+
+    // Remove first element
+    myTasks.tasks.shift();
+    console.log("--- After Removing First Element ---");
+    console.log("myTasks.tasks:", myTasks.tasks);
+
+    // Remove last element
+    myTasks.tasks.pop();
+    console.log("--- After Removing Last Element ---");
+    console.log("myTasks.tasks:", myTasks.tasks);
+
+    // Add data at middle position (index 1)
+    myTasks.tasks.splice(1, 0, "Write code");
+    console.log("--- After Adding at Middle (Index 1) ---");
+    console.log("myTasks.tasks:", myTasks.tasks);
+
+    // Remove from middle position (index 1)
+    myTasks.tasks.splice(1, 1);
+    console.log("--- After Removing from Middle (Index 1) ---");
+    console.log("myTasks.tasks:", myTasks.tasks);
+
+    // Display data with for-loop
+    console.log("--- Display Object Data with for-loop ---");
+    for (let i = 0; i < myTasks.tasks.length; i++) {
+      console.log("Task", i + 1 + ":", myTasks.tasks[i]);
+    }
+
+    // Display single element without loop
+    console.log("--- Single Element Access ---");
+    console.log("Task at index 1:", myTasks.tasks[1]);
+
+    // Demonstrate object destructuring
+    console.log("--- Object Destructuring ---");
+    let { tasks } = myTasks; // Destructure the tasks array
+    let [firstTask, secondTask, thirdTask] = tasks; // Destructure the array
+    console.log("Destructured tasks:", { firstTask, secondTask, thirdTask });
+
+    // Built-in object example (using Date as a built-in object)
+    console.log("--- Built-in Object (Date) ---");
+    let dateObj = new Date();
+    console.log("Current Date:", dateObj);
+    console.log("Date prototype:", Object.getPrototypeOf(dateObj));
+  </script>
+</body>
+</html>

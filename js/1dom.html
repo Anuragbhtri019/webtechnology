@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>To-Do List</title>
+  
+  <style>
+    .task {
+      padding: 10px;
+      border: 1px solid blue;
+      margin: 5px;
+      background-color: lightyellow;
+      display: flex;
+      justify-content: space-between;
+      width: 300px;
+    }
+    button {
+      cursor: pointer;
+      margin-left: 5px;
+    }
+    .completed {
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <h1>My To-Do List</h1>
+    <p id="instruction">Please enter your tasks here</p>
+    <input type="text" id="taskInput" placeholder="Enter a task">
+    <button id="addButton">Add Task</button>
+    <button id="completeAllButton">Complete ALL</button>
+    <button id="deleteAllButton">Delete All</button>
+    <div id="taskList"></div>
+  </div>
+
+  <script>
+    // Access DOM elements
+    let root = document.getElementById("root");
+    let taskInput = document.getElementById("taskInput");
+    let addButton = document.getElementById("addButton");
+    let completeAllButton = document.getElementById("completeAllButton");
+    let deleteAllButton = document.getElementById("deleteAllButton");
+    let taskList = document.getElementById("taskList");
+
+    // Load tasks from localStorage on page load
+    function loadTasks() {
+      let tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
+      console.log("Loaded tasks:", tasks, "Length:", tasks.length);
+      taskList.innerHTML = ""; // Clear existing tasks
+      tasks.forEach(taskText => {
+        createTaskElement(taskText);
+      });
+    }
+
+    // Function to create a task element
+    function createTaskElement(taskText) {
+      let taskDiv = document.createElement("div");
+      taskDiv.classList.add("task");
+      taskDiv.innerText = taskText;
+
+      // Create Completed button
+      let completeButton = document.createElement("button");
+      completeButton.innerText = "Completed";
+      completeButton.style.backgroundColor = "green";
+      completeButton.style.color = "white";
+      completeButton.style.padding = "2px 10px";
+
+      // Create Delete button
+      let deleteButton = document.createElement("button");
+      deleteButton.innerText = "Delete";
+      deleteButton.style.backgroundColor = "red";
+      deleteButton.style.color = "white";
+      deleteButton.style.padding = "2px 10px";
+
+      // Append buttons to taskDiv
+      taskDiv.appendChild(completeButton);
+      taskDiv.appendChild(deleteButton);
+      taskList.appendChild(taskDiv);
+
+      // Add event listener for Completed button
+      completeButton.addEventListener("click", function() {
+        taskDiv.classList.toggle("completed");
+      });
+
+      // Add event listener for Delete button
+      deleteButton.addEventListener("click", function() {
+        taskList.removeChild(taskDiv);
+        let updatedTasks = JSON.parse(localStorage.getItem("tasks") || "[]");
+        updatedTasks = updatedTasks.filter(t => t !== taskText);
+        localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+        console.log("Updated tasks after delete:", updatedTasks, "Length:", updatedTasks.length);
+      });
+    }
+
+    // Function to add a new task
+    function addTask() {
+      let taskText = taskInput.value.trim();
+      
+      if (taskText === "") {
+        alert("Please enter a task!");
+        return;
+      }
+
+      createTaskElement(taskText);
+
+      // Save task to localStorage
+      let tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
+      tasks.push(taskText);
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+      console.log("Updated tasks after add:", tasks, "Length:", tasks.length);
+
+      // Clear the input field
+      taskInput.value = "";
+    }
+
+    // Function to mark all tasks as complete
+    function completeAllTasks() {
+      let tasks = document.querySelectorAll(".task");
+      tasks.forEach(task => {
+        task.classList.add("completed");
+      });
+    }
+
+    // Function to delete all tasks
+    function deleteAllTasks() {
+      taskList.innerHTML = ""; // Clear all tasks from the DOM
+      localStorage.removeItem("tasks"); // Remove all tasks from localStorage
+      console.log("All tasks deleted. localStorage cleared.");
+    }
+
+    // Add event listeners
+    addButton.addEventListener("click", addTask);
+    completeAllButton.addEventListener("click", completeAllTasks);
+    deleteAllButton.addEventListener("click", deleteAllTasks);
+
+    taskInput.addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        addTask();
+      }
+    });
+
+    // Load tasks when the page loads
+    window.onload = loadTasks;
+  </script>
+</body>
+</html>

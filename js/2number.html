@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number</title>
+</head>
+        <body>
+                <script>
+                                // Function to find the largest and smallest elements in an array of 10 elements
+                    function findLargestSmallestInArray() {
+                        // Initialize an array with 10 elements (example values)
+                        let arr = [23, 45, 12, 67, 89, 34, 9, 56, 78, 15];
+                        
+                        // Check if array has exactly 10 elements
+                        if (arr.length !== 10) {
+                            console.log("Error: Array must contain exactly 10 elements.");
+                            return;
+                        }
+
+                        // Initialize largest and smallest with the first element
+                        let largest = arr[0];
+                        let smallest = arr[0];
+
+                        // Iterate through the array to find largest and smallest
+                        for (let i = 1; i < arr.length; i++) {
+                            if (arr[i] > largest) {
+                                largest = arr[i];
+                            }
+                            if (arr[i] < smallest) {
+                                smallest = arr[i];
+                            }
+                        }
+
+                        console.log("Array:", arr);
+                        console.log("Largest element:", largest);
+                        console.log("Smallest element:", smallest);
+                    }
+
+                    // Function to find the largest and smallest digits in a 5-digit number
+                    function findLargestSmallestInNumber() {
+                        // Take a 5-digit number (example: 48392)
+                        let number = 48392;
+
+                        // Check if the number is a 5-digit number
+                        if (number < 10000 || number > 99999) {
+                            console.log("Error: Please enter a 5-digit number.");
+                            return;
+                        }
+
+                        // Convert number to string to process digits
+                        let numStr = number.toString();
+                        let digits = numStr.split('').map(Number);
+
+                        // Initialize largest and smallest with the first digit
+                        let largest = digits[0];
+                        let smallest = digits[0];
+
+                        // Iterate through the digits to find largest and smallest
+                        for (let i = 1; i < digits.length; i++) {
+                            if (digits[i] > largest) {
+                                largest = digits[i];
+                            }
+                            if (digits[i] < smallest) {
+                                smallest = digits[i];
+                            }
+                        }
+
+                        console.log("Number:", number);
+                        console.log("Digits:", digits);
+                        console.log("Largest digit:", largest);
+                        console.log("Smallest digit:", smallest);
+                    }
+
+                    // Execute both functions
+                    console.log("--- Finding Largest and Smallest in Array ---");
+                    findLargestSmallestInArray();
+
+                    console.log("--- Finding Largest and Smallest in Number ---");
+                    findLargestSmallestInNumber();
+            </script>
+            
+            
+        </body>
+</html>

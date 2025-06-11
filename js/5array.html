@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array Demonstration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 15px;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <h3>Array Demonstration</h3>
+
+ <script>
+    // Multiple ways to create an array
+    console.log("--- Multiple Ways to Create an Array ---");
+    let array1 = new Array(); // Using Array constructor
+    let array2 = []; // Using array literal
+    let array3 = new Array(1, 2, 3, 4, 5); // Using Array constructor with initial values
+    let array4 = [6, 7, 8, 9, 10]; // Using array literal with initial values
+    console.log("Array1 (empty):", array1);
+    console.log("Array2 (empty):", array2);
+    console.log("Array3 (constructor with values):", array3);
+    console.log("Array4 (literal with values):", array4);
+
+    // Initial array for demonstration (to-do list)
+    let tasks = ["Buy groceries", "Read book", "Exercise"];
+    console.log("--- Initial Tasks Array ---");
+    console.log("Tasks:", tasks);
+
+    // Check prototypes of Array
+    console.log("--- Array Prototype ---");
+    console.log("Array prototype:", Array.prototype);
+
+    // Add data as first element
+    tasks.unshift("Wake up early");
+    console.log("--- After Adding First Element ---");
+    console.log("Tasks:", tasks);
+
+    // Add data as last element
+    tasks.push("Sleep well");
+    console.log("--- After Adding Last Element ---");
+    console.log("Tasks:", tasks);
+
+    // Remove first element
+    tasks.shift();
+    console.log("--- After Removing First Element ---");
+    console.log("Tasks:", tasks);
+
+    // Remove last element
+    tasks.pop();
+    console.log("--- After Removing Last Element ---");
+    console.log("Tasks:", tasks);
+
+    // Add data at middle position (index 1)
+    tasks.splice(1, 0, "Write code");
+    console.log("--- After Adding at Middle (Index 1) ---");
+    console.log("Tasks:", tasks);
+
+    // Remove from middle position (index 1)
+    tasks.splice(1, 1);
+    console.log("--- After Removing from Middle (Index 1) ---");
+    console.log("Tasks:", tasks);
+
+    // Demonstrate array methods: forEach, map, filter, reduce
+    console.log("--- Array Methods Demonstration ---");
+    let numbers = [1, 2, 3, 4, 5];
+
+    // forEach: Log each element
+    numbers.forEach(num => console.log("forEach:", num));
+
+    // map: Double each element
+    let doubled = numbers.map(num => num * 2);
+    console.log("map (doubled):", doubled);
+
+    // filter: Get even numbers
+    let evens = numbers.filter(num => num % 2 === 0);
+    console.log("filter (evens):", evens);
+
+    // reduce: Sum all elements
+    let sum = numbers.reduce((acc, curr) => acc + curr, 0);
+    console.log("reduce (sum):", sum);
+
+    // Display data with for-loop
+    console.log("--- Display Array with for-loop ---");
+    for (let i = 0; i < tasks.length; i++) {
+      console.log("Task", i + 1 + ":", tasks[i]);
+    }
+
+    // Check length of array
+    console.log("--- Array Length ---");
+    console.log("Length of tasks array:", tasks.length);
+
+    // Display single element without loop
+    console.log("--- Single Element Access ---");
+    console.log("Task at index 1:", tasks[1]);
+
+    // Demonstrate array destructuring
+    console.log("--- Array Destructuring ---");
+    let [firstTask, secondTask, thirdTask] = tasks;
+    console.log("Destructured tasks:", { firstTask, secondTask, thirdTask });
+  </script>
+</body>
+</html>

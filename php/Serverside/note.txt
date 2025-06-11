@@ -1,0 +1,68 @@
+CREATE DATABASE project;
+
+USE project;
+
+CREATE TABLE registrations (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    phone VARCHAR(15) NOT NULL,
+    gender VARCHAR(10) NOT NULL,
+    faculty VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
+
+CREATE TABLE students (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id VARCHAR(10) NOT NULL UNIQUE,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    faculty VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_student_id ON students(student_id);
+CREATE INDEX idx_email ON students(email);
+
+CREATE TABLE authentication (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    phone VARCHAR(15) NOT NULL,
+    gender VARCHAR(10) NOT NULL,
+    faculty VARCHAR(100) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
+
+CREATE TABLE books (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    publisher VARCHAR(100) NOT NULL,
+    author VARCHAR(100) NOT NULL,
+    edition VARCHAR(50),
+    no_of_page INT NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    publish_date DATE NOT NULL,
+    isbn VARCHAR(13) NOT NULL UNIQUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+-- Add indexes for faster queries
+CREATE INDEX idx_isbn ON books(isbn);
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    photo VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

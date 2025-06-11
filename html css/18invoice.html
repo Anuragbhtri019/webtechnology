@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            align-items: justify;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .invoice-container {
+            width: 100%;
+            max-width: 800px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            border-bottom: 5px solid #f28c38;
+            padding-bottom: 10px;
+        }
+
+        .company-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            height: 60px;
+            width: 60px;
+            background-color: #ccc;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .company-details {
+            font-size: 14px;
+        }
+
+        .company-details p {
+            margin: 2px 0;
+        }
+
+        .invoice-title {
+            text-align: right;
+        }
+
+        .invoice-title h1 {
+            color: #f28c38;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .invoice-title p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .invoice-title .payment-terms {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .section div {
+            width: 48%;
+        }
+
+        .section h3 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            font-size: 14px;
+            color: #666;
+            margin: 5px 0;
+        }
+
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th {
+            background-color: #f28c38;
+            color: white;
+            padding: 10px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .summary {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        .summary p {
+            font-size: 14px;
+            color: #333;
+            margin: 5px 0;
+        }
+
+        .summary .total {
+            font-weight: bold;
+            color: #f28c38;
+        }
+
+        .footer {
+            border-top: 5px solid #f28c38;
+            padding-top: 10px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            margin-top: 20px;
+        }
+        .summary-rem{
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-container">
+        <div class="header">
+            <div class="company-info">
+                <div class="logo">LOGO</div>
+                <div class="company-details">
+                    <p><strong>Your Company Name</strong></p>
+                    <p>Your address</p>
+                    <p>Your contact details</p>
+                </div>
+            </div>
+            <div class="invoice-title">
+                <h1>INVOICE</h1>
+                <p>DATE</p>
+                <p>INVOICE NO.</p>
+                <p class="payment-terms">Payment terms (due on receipt, due in X days)</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div>
+                <h3>BILL TO</h3>
+                <p><strong>Contact Name</strong></p>
+                <p>Client Company Name</p>
+                <p>Address</p>
+                <p>Phone</p>
+                <p>Email</p>
+            </div>
+            <div>
+                <h3>SHIP TO</h3>
+                <p><strong>Name / Dept</strong></p>
+                <p>Client Company Name</p>
+                <p>Address</p>
+                <p>Phone</p>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>DESCRIPTION</th>
+                        <th>QTY</th>
+                        <th>UNIT PRICE</th>
+                        <th>TOTAL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0.00</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0.00</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0.00</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0.00</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0.00</td>
+                    </tr>
+                   
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0.00</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0.00</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0.00</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0.00</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>0.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        
+            <div class="summary-rem">
+                <p>Remarks / Payment Instructions</p>
+            </div>
+            <div class="summary">
+            <p>SUBTOTAL:_____________0.00</p>
+            <p>SUBTOTAL LESS DISCOUNT:______________0.00</p>
+            <p>TAX RATE:_____________ 0.00%</p>
+            <p>TOTAL TAX:  ______________0.00</p>
+            <p>SHIPPING/HANDLING: ______________ 0.00</p>
+            <p class="total">Balance Due ______________ $-</p>
+        </div>
+
+        <div class="footer">
+            <p>Thank you for your business!</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Cookies Demo</title>
+    <style>
+        body {
+            margin: 0;
+            box-sizing: border-box;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Changed to flex-start to avoid cutting off content */
+            min-height: 100vh; /* Use min-height to allow content to expand */
+            font-family: Arial, sans-serif;
+            padding: 20px; /* Add padding for smaller screens */
+        }
+
+        #root {
+            width: 100%; /* Make it responsive */
+            max-width: 600px; /* Set a max-width for larger screens */
+            padding: 20px;
+            background-color: white;
+            border: 2px solid #333;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box; /* Ensure padding doesn't increase width */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px; /* Increased margin for better spacing */
+        }
+
+        h3 {
+            margin-bottom: 10px;
+        }
+
+        div {
+            margin-bottom: 20px; /* Increased spacing between sections */
+        }
+
+        label {
+            display: block; /* Ensure labels stack above inputs */
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="number"] {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 5s ease; /* Smooth transition for background color over 5 seconds */
+        }
+
+        button:hover {
+            background-color: #444;
+        }
+
+        button:active {
+            background-color: #040; /* Dark green when clicked, as per your request */
+        }
+
+        p {
+            font-size: 16px;
+            text-align: center;
+            margin: 5px 0;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            #root {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            input[type="text"], input[type="number"], button {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <h1>Cookies in JavaScript</h1>
+
+        <!-- Form to set a cookie -->
+        <div>
+            <h3>Set a Cookie</h3>
+            <label for="cookieName">Cookie Name: </label>
+            <input type="text" id="cookieName" placeholder="Enter cookie name"><br><br>
+            <label for="cookieValue">Cookie Value: </label>
+            <input type="text" id="cookieValue" placeholder="Enter cookie value"><br><br>
+            <label for="cookieExpiry">Expiry (in days): </label>
+            <input type="number" id="cookieExpiry" placeholder="Enter expiry in days"><br><br>
+            <button onclick="setCookie()">Set Cookie</button>
+            <p id="setResult"></p>
+        </div>
+
+        <br>
+
+        <!-- Button to get a cookie -->
+        <div>
+            <h3>Get a Cookie</h3>
+            <label for="cookieGet">Cookie Name: </label>
+            <input type="text" id="cookieGet" placeholder="Enter cookie name to retrieve"><br><br>
+            <button onclick="getCookie()">Get Cookie</button>
+            <p id="cookieResult"></p>
+        </div>
+
+        <br>
+
+        <!-- Button to delete a cookie -->
+        <div>
+            <h3>Delete a Cookie</h3>
+            <label for="cookieDelete">Cookie Name: </label>
+            <input type="text" id="cookieDelete" placeholder="Enter cookie name to delete"><br><br>
+            <button onclick="deleteCookie()">Delete Cookie</button>
+            <p id="deleteResult"></p>
+        </div>
+
+        <br>
+
+        <!-- Button to list all cookies -->
+        <div>
+            <h3>List All Cookies</h3>
+            <button onclick="listCookies()">List Cookies</button>
+            <p id="listResult"></p>
+        </div>
+    </div>
+
+    <script>
+        // Display message with styling
+        function displayMessage(elementId, message, isSuccess) {
+            const element = document.getElementById(elementId);
+            element.innerText = message;
+            element.className = isSuccess ? 'success' : 'error';
+        }
+
+        // Validate cookie name and value
+        function validateCookieInput(name, value) {
+            const invalidChars = /[;=]/;
+            if (!name || !value) {
+                return "Cookie name and value are required.";
+            }
+            if (invalidChars.test(name) || invalidChars.test(value)) {
+                return "Cookie name and value cannot contain ; or =.";
+            }
+            return null;
+        }
+
+        // Set a cookie
+        function setCookie() {
+            let name = document.getElementById('cookieName').value.trim().toLowerCase();
+            let value = document.getElementById('cookieValue').value.trim();
+            let expiryDays = parseInt(document.getElementById('cookieExpiry').value) || 1; // Default to 1 day
+
+            // Validate input
+            const validationError = validateCookieInput(name, value);
+            if (validationError) {
+                displayMessage('setResult', validationError, false);
+                return;
+            }
+
+            // Validate expiry
+            if (isNaN(expiryDays) || expiryDays <= 0) {
+                displayMessage('setResult', 'Expiry must be a positive number.', false);
+                return;
+            }
+
+            // Encode value to handle special characters
+            value = encodeURIComponent(value);
+
+            // Set the cookie
+            const expiryDate = new Date();
+            expiryDate.setTime(expiryDate.getTime() + (expiryDays * 24 * 60 * 60 * 1000));
+            const expires = "expires=" + expiryDate.toUTCString();
+            document.cookie = `${name}=${value};${expires};path=/`;
+            
+            displayMessage('setResult', `Cookie '${name}' set successfully! Expires on ${expiryDate.toLocaleDateString()}.`, true);
+        }
+
+        // Get a cookie by name
+        function getCookie() {
+            let name = document.getElementById('cookieGet').value.trim().toLowerCase();
+            if (!name) {
+                displayMessage('cookieResult', 'Please enter a cookie name.', false);
+                return;
+            }
+
+            const cookieName = name + "=";
+            const decodedCookie = decodeURIComponent(document.cookie);
+            const ca = decodedCookie.split(';');
+            let result = "Cookie not found!";
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i].trim();
+                if (c.indexOf(cookieName) === 0) {
+                    result = c.substring(cookieName.length, c.length);
+                    break;
+                }
+            }
+            displayMessage('cookieResult', result === "Cookie not found!" ? result : `Value: ${result}`, result !== "Cookie not found!");
+        }
+
+        // Delete a cookie by name
+        function deleteCookie() {
+            let name = document.getElementById('cookieDelete').value.trim().toLowerCase();
+            if (!name) {
+                displayMessage('deleteResult', 'Please enter a cookie name.', false);
+                return;
+            }
+
+            document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/";
+            displayMessage('deleteResult', `Cookie '${name}' deleted successfully!`, true);
+        }
+
+        // List all cookies
+        function listCookies() {
+            const decodedCookie = decodeURIComponent(document.cookie);
+            if (!decodedCookie) {
+                displayMessage('listResult', 'No cookies found.', false);
+                return;
+            }
+
+            const ca = decodedCookie.split(';');
+            let result = "Cookies:\n";
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i].trim();
+                if (c) {
+                    result += c + "\n";
+                }
+            }
+            displayMessage('listResult', result, true);
+        }
+    </script>
+</body>
+</html>

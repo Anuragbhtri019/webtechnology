@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Players Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9; padding: 10px;
+        }
+
+        .gallery-container {
+            max-width: 1200px; margin: auto auto;
+        }
+
+        .gallery {
+            display: grid; grid-template-columns: repeat(4, 1fr); 
+            gap: 15px;  padding: 10px;
+        }
+
+        .card {
+            border: 1px solid #daa;  background-color: #bff;
+            overflow: hidden;
+        }
+
+        .card img {
+            width: 100%; height: 200px;  object-fit: cover;
+            display: block; object-position: center;
+        }
+
+        .card-caption {
+            text-align: center;  padding: 5px;  font-size: 1em;  color: #333;
+        }
+
+        h1 {
+            text-align: center; margin-bottom: 15px;
+            color: #333; font-size: 1.5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery-container">
+        <h1>Football Players Gallery</h1>
+        <div class="gallery">
+            <div class="card">
+                <img src="../images/messi.jpg" alt="LM10">
+                <div class="card-caption">Lionel Messi</div>
+            </div>
+            <div class="card">
+                <img src="../images/cristiano.jpg" alt="CR7">
+                <div class="card-caption">Cristiano Ronaldo</div>
+            </div>
+            <div class="card">
+                <img src="../images/pele.jpg" alt="Pelé">
+                <div class="card-caption">Pelé</div>
+            </div>
+            <div class="card">
+                <img src="../images/maradona.jpg" alt="DM10">
+                <div class="card-caption">Diego Maradona</div>
+            </div>
+            <div class="card">
+                <img src="../images/cruyff.jpg" alt="JC14">
+                <div class="card-caption">Johan Cruyff</div>
+            </div>
+            <div class="card">
+                <img src="../images/zidane.jpg" alt="ZZ5">
+                <div class="card-caption">Zinedine Zidane</div>
+            </div>
+            <div class="card">
+                <img src="../images/neymar.jpg" alt="NJr10">
+                <div class="card-caption">Neymar JR</div>
+            </div>
+            <div class="card">
+                <img src="../images/suarez.jpg" alt="LS9">
+                <div class="card-caption">Luis Suárez</div>
+            </div>
+            <div class="card">
+                <img src="../images/Benzema.jpg" alt="KB9">
+                <div class="card-caption">Karim Benzema</div>
+            </div>
+            <div class="card">
+                <img src="../images/Bale.jpg" alt="GB11">
+                <div class="card-caption">Gareth Bale</div>
+            </div>
+            <div class="card">
+                <img src="../images/Lewa.jpg" alt="RL9">
+                <div class="card-caption">Robert Lewandowski</div>
+            </div>
+            <div class="card">
+                <img src="../images/kdb.jpg" alt="KDB17">
+                <div class="card-caption">Kevin De Bruyne</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

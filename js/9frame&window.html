@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frames with Focus and Blur Effect</title>
+    <style>
+        /* Container to hold all frames */
+        .container {
+            display: flex;
+            height: 100vh; /* Full height */
+        }
+
+        /* Left frame */
+        .left-frame {
+            width: 30%; /* 30% of the container's width */
+            border: 2px solid #ccc;
+            transition: border-color 0.3s, background-color 0.3s;
+        }
+
+        /* Right container holding top and bottom frames */
+        .right-container {
+            width: 70%; /* Remaining 70% */
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top frame */
+        .top-frame {
+            height: 50%; /* 50% of the right container's height */
+            border: 2px solid #ccc;
+            transition: border-color 0.3s, background-color 0.3s;
+        }
+
+        /* Bottom frame */
+        .bottom-frame {
+            height: 50%; /* 50% of the right container's height */
+            border: 2px solid #ccc;
+            transition: border-color 0.3s, background-color 0.3s;
+        }
+
+        /* Style for focused frame: Remove blur and highlight */
+        .focused {
+            border-color: blue; /* Blue border for focused frames */
+            background-color: #f0f8ff; /* Slightly light blue background on hover */
+            filter: none; /* No blur effect on focused frame */
+        }
+
+        /* Style for non-focused frames: Apply blur effect */
+        .blurred {
+            filter: blur(3px); /* Apply blur effect to non-focused frames */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Frame -->
+        <iframe id="leftFrame" src="home.html" class="left-frame" title="Home"></iframe>
+
+        <!-- Right Container with top and bottom frames -->
+        <div class="right-container">
+            <iframe id="topFrame" src="about.html" class="top-frame" title="About"></iframe>
+            <iframe id="bottomFrame" src="contact.html" class="bottom-frame" title="Contact"></iframe>
+        </div>
+    </div>
+
+    <script>
+        // Function to add the 'focused' class and remove blur
+        function addFocusClass(frameId) {
+            const frame = document.getElementById(frameId);
+            frame.classList.add("focused");
+            frame.classList.remove("blurred");  // Remove blur from focused frame
+        }
+
+        // Function to add the 'blurred' class to all frames except the focused one
+        function addBlurEffect(exceptFrameId) {
+            const allFrames = document.querySelectorAll("iframe");
+            allFrames.forEach(frame => {
+                if (frame.id !== exceptFrameId) {
+                    frame.classList.add("blurred");
+                }
+            });
+        }
+
+        // Event listeners for each frame
+        document.getElementById('leftFrame').addEventListener('mouseenter', function() {
+            addFocusClass('leftFrame');
+            addBlurEffect('leftFrame');  // Add blur effect to other frames
+        });
+        document.getElementById('leftFrame').addEventListener('mouseleave', function() {
+            removeFocusClass('leftFrame');
+            removeBlurEffect();
+        });
+
+        document.getElementById('topFrame').addEventListener('mouseenter', function() {
+            addFocusClass('topFrame');
+            addBlurEffect('topFrame');  // Add blur effect to other frames
+        });
+        document.getElementById('topFrame').addEventListener('mouseleave', function() {
+            removeFocusClass('topFrame');
+            removeBlurEffect();
+        });
+
+        document.getElementById('bottomFrame').addEventListener('mouseenter', function() {
+            addFocusClass('bottomFrame');
+            addBlurEffect('bottomFrame');  // Add blur effect to other frames
+        });
+        document.getElementById('bottomFrame').addEventListener('mouseleave', function() {
+            removeFocusClass('bottomFrame');
+            removeBlurEffect();
+        });
+
+        // Function to remove the 'focused' class
+        function removeFocusClass(frameId) {
+            const frame = document.getElementById(frameId);
+            frame.classList.remove("focused");
+        }
+
+        // Function to remove the blur effect from all frames
+        function removeBlurEffect() {
+            const allFrames = document.querySelectorAll("iframe");
+            allFrames.forEach(frame => {
+                frame.classList.remove("blurred");
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basic Arithmetic Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+    .calculator {
+      border: 2px solid #000;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .input-group {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    input[type="number"] {
+      width: 45%;
+      padding: 5px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      background-color: #333;
+      color: white;
+      border-radius: 3px;
+      width: 18%;
+      
+    }
+    button:hover {
+      background-color: #555;
+    } 
+    
+    button:active {
+      background-color: #040 ;
+    }
+    #result {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      text-align: center;
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h2>Basic Arithmetic Functions</h2>
+    <div class="input-group">
+      <input type="number" id="operand1" placeholder="Operand">
+      <input type="number" id="operand2" placeholder="Operand">
+    </div>
+    <div class="buttons">
+      <button onclick="calculate('add')">ADD</button>
+      <button onclick="calculate('sub')">SUB</button>
+      <button onclick="calculate('mul')">MUL</button>
+      <button onclick="calculate('div')">DIV</button>
+      <button onclick="calculate('mod')">MOD</button>
+    </div>
+    <div id="result">Result</div>
+  </div>
+
+  <script>
+    // Function to perform arithmetic operations
+    function calculate(operation) {
+      // Get the operands from input fields
+      let operand1 = parseFloat(document.getElementById("operand1").value);
+      let operand2 = parseFloat(document.getElementById("operand2").value);
+      let resultBox = document.getElementById("result");
+      let result;
+         
+      
+      // Validate inputs
+      if (isNaN(operand1) || isNaN(operand2)) {
+        resultBox.innerText = "Please enter valid numbers";
+        return;
+      }
+
+      // Perform the selected operation
+      switch (operation) {
+        case "add":
+          result = operand1 + operand2;
+          resultBox.innerText = result;
+          break;
+        case "sub":
+          result = operand1 - operand2;
+          resultBox.innerText = result;
+          break;
+        case "mul":
+          result = operand1 * operand2;
+          resultBox.innerText = result;
+          break;
+        case "div":
+          if (operand2 === 0) {
+            resultBox.innerText = "Cannot divide by zero";
+          } else {
+            result = operand1 / operand2;
+            resultBox.innerText = result;
+          }
+          break;
+        case "mod":
+          if (operand2 === 0) {
+            resultBox.innerText = "Cannot compute modulus with zero";
+          } else {
+            result = operand1 % operand2;
+            resultBox.innerText = result;
+          }
+          break;
+        default:
+          resultBox.innerText = "Invalid operation";
+      }
+    }
+  </script>
+</body>
+</html>

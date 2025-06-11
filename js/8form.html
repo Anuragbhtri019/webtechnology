@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 40%;
+            margin-top: 100px;
+        }
+
+        legend {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        label {
+            display: block;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input, select, textarea {
+            padding: 8px;
+            font-size: 1rem;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            background-color: white;
+        }
+
+        textarea {
+            resize: none;
+            height: 80px;
+        }
+        .message-container {
+            grid-column: span 2;
+        }
+
+        .checkbox-container {
+            grid-column: span 2;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .checkbox-container input {
+            width: auto;
+        }
+
+        button {
+            padding: 12px;
+            background: #333;
+            width: 35%;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+            margin: 10px 0;
+        }
+
+        .reqd {
+            text-align: left;
+            font-size: 15px;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9rem;
+            margin-top: 3px;
+            display: block;
+        }
+
+        sup {
+            color: red;
+        }
+        .field-group {
+            width: 100%;
+        }
+
+        .checkbox-container label{
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <fieldset>
+            <legend>Register</legend>
+            <div class="form-container">
+                <form id="registrationForm" action="#" method="post" novalidate>
+                    <div class="fields">
+                        <div class="field-group">
+                            <label for="fname">Full Name<sup>*</sup></label>
+                            <input type="text" id="fname" name="fname">
+                            <span class="error" id="fnameError"></span>
+                        </div>
+
+                        <div>
+                            <label for="email">E-Mail<sup>*</sup></label>
+                            <input type="email" id="email" name="email">
+                            <span class="error" id="emailError"></span>
+                        </div>
+
+                        <div>
+                            <label for="uname">Username<sup>*</sup></label>
+                            <input type="text" id="uname" name="uname">
+                            <span class="error" id="unameError"></span>
+                        </div>
+
+                        <div>
+                            <label for="password">Password<sup>*</sup></label>
+                            <input type="password" id="password" name="password">
+                            <span class="error" id="passwordError"></span>
+                        </div>
+
+                        <div>
+                            <label for="service">Service<sup>*</sup></label>
+                            <select id="service" name="service">
+                                <option value="" hidden selected>Choose a Service</option>
+                                <option value="Service 1">Service 1</option>
+                                <option value="Service 2">Service 2</option>
+                                <option value="Service 3">Service 3</option>
+                            </select>
+                            <span class="error" id="serviceError"></span>
+                        </div>
+
+                        <div>
+                            <label for="cpassword">Confirm Password<sup>*</sup></label>
+                            <input type="password" id="cpassword" name="cpassword">
+                            <span class="error" id="cpasswordError"></span>
+                        </div>
+
+                        <div class="message-container">
+                            <label for="message">Message</label>
+                            <textarea name="message" id="message" placeholder="Write your comment here."></textarea>
+                            <span class="error" id="messageError"></span>
+                        </div>
+
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="terms-conditions">
+                            <label for="terms-conditions"><em>I agree to the <a href="#">Terms and Conditions.</a></em></label>
+                        </div>
+                        <p class="reqd"><sup>*</sup><em>Required fields</em></p>
+                    </div>
+                    <div style="text-align: center;">
+                        <button type="submit">SUBMIT</button>
+                    </div>
+                </form>
+            </div>
+        </fieldset>
+    </div>
+
+    <script>
+        // Initial Form Submit Validation
+        document.getElementById("registrationForm").addEventListener("submit", function (e) {
+            let valid = true;
+    
+            // Clear previous error messages
+            document.querySelectorAll(".error").forEach(error => error.innerText = "");
+    
+            let fname = document.getElementById("fname"),
+                email = document.getElementById("email"),
+                uname = document.getElementById("uname"),
+                password = document.getElementById("password"),
+                cpassword = document.getElementById("cpassword"),
+                service = document.getElementById("service"),
+                message = document.getElementById("message");
+    
+            // Full Name validation
+            if (fname.value.trim() === "") {
+                document.getElementById("fnameError").innerText = "Full name is required.";
+                valid = false;
+            } else if (fname.value.length > 20) {
+                document.getElementById("fnameError").innerText = "Full name must be under 20 characters.";
+                valid = false;
+            }
+    
+            // Email validation
+            let emailRegex = /^[a-zA-Z0-9]+@gmail\.com$/;
+            if (email.value.trim() === "") {
+                document.getElementById("emailError").innerText = "E-mail is required.";
+                valid = false;
+            } else if (!emailRegex.test(email.value)) {
+                document.getElementById("emailError").innerText = "Invalid email format.";
+                valid = false;
+            }
+    
+            // Username validation
+            let unameRegex = /^[a-zA-Z]+\d*$/;
+            if (uname.value.trim() === "") {
+                document.getElementById("unameError").innerText = "Username is required.";
+                valid = false;
+            } else if (!unameRegex.test(uname.value)) {
+                document.getElementById("unameError").innerText = "Username must start with a letter followed by numbers.";
+                valid = false;
+            }
+    
+            // Password validation
+            if (password.value.trim() === "") {
+                document.getElementById("passwordError").innerText = "Password is required.";
+                valid = false;
+            } else if (password.value.length < 8) {
+                document.getElementById("passwordError").innerText = "Password must be at least 8 characters long.";
+                valid = false;
+            }
+    
+            // Confirm Password validation
+            if (cpassword.value.trim() === "") {
+                document.getElementById("cpasswordError").innerText = "Confirm password is required.";
+                valid = false;
+            } else if (cpassword.value !== password.value) {
+                document.getElementById("cpasswordError").innerText = "Passwords do not match.";
+                valid = false;
+            }
+    
+            // Service selection validation
+            if (service.value === "") {
+                document.getElementById("serviceError").innerText = "Please select a service.";
+                valid = false;
+            }
+    
+            // Message validation
+            if (message.value.length > 200) {
+                document.getElementById("messageError").innerText = "Message must be under 200 characters.";
+                valid = false;
+            }
+    
+            if (!valid) e.preventDefault();
+        });
+    
+        // Real-time validation for required fields
+        function addLiveValidation(fieldId, errorId, errorMsg) {
+            document.getElementById(fieldId).addEventListener("keyup", function () {
+                document.getElementById(errorId).innerText = this.value.trim() ? "" : errorMsg;
+            });
+        }
+    
+        addLiveValidation("fname", "fnameError", "Full name is required.");
+        addLiveValidation("email", "emailError", "E-mail is required.");
+        addLiveValidation("uname", "unameError", "Username is required.");
+        addLiveValidation("password", "passwordError", "Password is required.");
+        addLiveValidation("cpassword", "cpasswordError", "Confirm password is required.");
+        addLiveValidation("message", "messageError", "Message cannot be empty.");
+    
+        // Service combo-box (select) validation on change event
+        document.getElementById("service").addEventListener("change", function () {
+            let serviceError = document.getElementById("serviceError");
+            if (this.value === "") {
+                serviceError.innerText = "Please select a service.";
+            } else {
+                serviceError.innerText = ""; // Clear error if a valid option is selected
+            }
+        });
+    </script>
+    
+    
+</body>
+</html>

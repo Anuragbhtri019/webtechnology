@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GradeSheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            text-align: center;
+            border: 1px solid black;
+            padding: 50px 60px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center; 
+            justify-content: center; 
+            gap: 15px; 
+            padding: 10px 0;
+        }
+
+        .image-container img {
+            height: 75px;
+            width: auto;
+        }
+
+        .title-container {
+            text-align: center;
+        }
+
+        .title-container .university {
+            font-size: 18px;
+
+        }
+
+        .title-container .program {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .title-container .address {
+            font-size: 18px;
+
+        }
+        .title{
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        .student-info{
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+        .left,.right{
+            text-align: start;
+        }
+        .table-container{
+            text-align: center;
+        }
+
+        .table-container table{
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table,th{
+            border: 1px solid black;
+        }
+        td{
+            border-right: 1px solid black;
+        }
+        td:first-child, th:first-child {
+            border-left: 1px solid black;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+        .credit-hour{
+            text-align: end;
+        }
+        .note{
+            text-align: start;
+        }
+        .note p{
+            margin: 0;
+        }
+        .footer{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-container">
+            <img src="..//images/tu_logo.png" alt="logo">
+        </div>
+        <div class="title-container">
+            <div class="university">
+                Tribhuvan University
+            </div>
+            <div class="program">
+                Institute of Science and Technology
+            </div>
+            <div class="address">
+                Balkhu, Nepal
+            </div>
+        </div>
+            
+        <div class="title">Grade - Sheet</div>
+        <div class="student-info">
+            <div class="left">
+                <p><strong>Student Name: </strong>ANURAG BHATTARAI</p>
+                <p><strong>Level: </strong>Bachelor</p>
+                <p><strong>Program: </strong>Bachelors Degree in Computer Science and Information Technology</p>
+                <p><strong>Campus: </strong>Nagarjuna College of Information Technology</p>
+            </div>
+            <div class="right">
+                <p><strong>Registration No: </strong>5-2-429-04-2022</p>
+                <p><strong>Exam Roll No: </strong>79010840</p>
+                <p><strong>Academic Year: </strong>2080</p>
+                <p><strong>Semester: </strong>Semester -II</p>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>S.N</th>
+                        <th>Subject Code</th>
+                        <th>Suject Name</th>
+                        <th>Cr. Hrs.</th>
+                        <th>Grade Point</th>
+                        <th>Grade</th>
+                        <th>Rem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>CSC 165</td>
+                        <td>Descrete Structure</td>
+                        <td>3</td>
+                        <td>3.3</td>
+                        <td>B+</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>CSC 166</td>
+                        <td>Object Oriented Programming</td>
+                        <td>3</td>
+                        <td>2.7</td>
+                        <td>B-</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>CSC 167</td>
+                        <td>Microprocessor</td>
+                        <td>3</td>
+                        <td>3.7</td>
+                        <td>A-</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>MTH168</td>
+                        <td>Mathematics II</td>
+                        <td>3</td>
+                        <td>3.3</td>
+                        <td>B+</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>STA169</td>
+                        <td>Statistics I</td>
+                        <td>3</td>
+                        <td>3.7</td>
+                        <td>A-</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="credit-hour">
+            <p><strong>Total Credit Hour : 15</strong></p>
+            <p><strong>SGPA : 3.34</strong></p>
+        </div>
+
+        <div class="note">
+            <p><strong>Note:</strong></p>
+            <p><strong>F : Fail in Theory</strong></p>
+            <p><strong>F<sup>*</sup> : Fail in Practical</strong></p>
+            <p><strong>F<sup>**</sup> : Fail in Theory and Practical</strong></p>
+            <p><strong>Abs : Absent in Theroy</strong></p>
+            <p><strong>Abs<sup>*</sup> : Absent in Practical</strong></p>
+            <p><strong>F# : Absent in Practical and Fail in Theory</strong></p>
+            <p><strong>F## : Absent in Theory and Fail in Practical</strong></p>
+            <p><strong>NQ : Fail or Absent in Internal</strong></p>
+            <p><strong>NQ<sup>*</sup> : NQ and Absent/Fail in Practical</strong></p>
+        </div>
+        <div class="footer">
+            <div class="issue-date">
+                <p><strong>3/14/2024</strong></p>
+                <hr>
+                <p><strong>Date of Issue</strong></p>
+            </div>
+            <div class="sign">
+                <hr>
+                <p><strong>Checked By</strong></p>
+            </div>
+            <div class="dean">
+                <hr>
+                <p><strong>
+                    Asst. Dean
+                </strong></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

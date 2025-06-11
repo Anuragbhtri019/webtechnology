@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Show/Hide Paragraph Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    p {
+      padding: 10px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+    }
+    button {
+      margin-right: 10px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+  <!-- Include jQuery library -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h1>Show/Hide Paragraph Demo</h1>
+
+            <!-- Section for Pure JavaScript Show/Hide -->
+            <h2>Pure JavaScript Show/Hide</h2>
+            <button onclick="toggleParagraphJS()">Toggle Paragraph (JS)</button>
+            <p id="jsParagraph">This is a paragraph controlled by pure JavaScript. Click the button ( Toggle Paragraph (JS)  ) to show or hide it.</p>
+
+            <!-- Section for jQuery Show/Hide -->
+            <h2>jQuery Show/Hide</h2>
+            <button onclick="toggleParagraphJQuery()">Toggle Paragraph (jQuery)</button>
+            <p id="jqueryParagraph">This is a paragraph controlled by jQuery. Click the  button ( Toggle Paragraph (jQuery) ) to show or hide it.</p>
+
+            <script>
+                // Pure JavaScript function to toggle paragraph visibility
+                function toggleParagraphJS() {
+                let paragraph = document.getElementById("jsParagraph");
+                if (paragraph.style.display === "none" || paragraph.style.display === "") {
+                    paragraph.style.display = "block"; // Show the paragraph
+                } else {
+                    paragraph.style.display = "none"; // Hide the paragraph
+                }
+                }
+
+                // jQuery function to toggle paragraph visibility
+                function toggleParagraphJQuery() {
+                $("#jqueryParagraph").toggle(); // Toggle show/hide using jQuery
+                }
+
+                // Initial state: Hide both paragraphs on page load
+                window.onload = function() {
+                document.getElementById("jsParagraph").style.display = "none";
+                $("#jqueryParagraph").hide();
+                };
+            </script>
+</body>
+</html>

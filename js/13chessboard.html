@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chessboard Pattern with JavaScript and DOM (Enhanced)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 99vh;
+      background-color: #f0f0f0;
+    }
+    .container {
+      text-align: center;
+    }
+    table {
+      border-collapse: collapse;
+      margin: 0 auto;
+    }
+    td {
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .black {
+      background-color: #769656;
+    }
+    .white {
+      background-color: #eeeed2;
+    }
+    .black-dark {
+      background-color: #5a3e2b;
+    }
+    .white-dark {
+      background-color: #c9a584;
+    }
+    .label {
+      background-color: transparent !important;
+      font-weight: bold;
+      color: #333;
+      cursor: default;
+    }
+    .highlight {
+      border: 3px solid #ff4500 !important;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 10px;
+      border: none;
+      background-color: #333;
+      color: white;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Chessboard Pattern</h1>
+    <table id="chessboard"></table>
+    <div>
+      <button onclick="toggleTheme()">Toggle Theme</button>
+    </div>
+  </div>
+
+  <script>
+    const table = document.getElementById("chessboard");
+    let isDarkTheme = false;
+    let lastHighlighted = null;
+
+    // Create the chessboard
+    for (let row = 0; row < 10; row++) {
+      const tr = document.createElement("tr");
+      for (let col = 0; col < 10; col++) {
+        const td = document.createElement("td");
+
+        if (row === 0 || row === 9) {
+          if (col > 0 && col < 9) {
+            td.textContent = String.fromCharCode(96 + col);
+            td.classList.add("label");
+          }
+        } else if (col === 0 || col === 9) {
+          if (row > 0 && row < 9) {
+            td.textContent = 9 - row;
+            td.classList.add("label");
+          }
+        } else {
+          const isBlack = (row + col) % 2 === 0;
+          td.classList.add(isBlack ? "black" : "white");
+          td.dataset.row = 9 - row;
+          td.dataset.col = String.fromCharCode(96 + col);
+          td.addEventListener("click", highlightSquare);
+        }
+
+        tr.appendChild(td);
+      }
+      table.appendChild(tr);
+    }
+
+    // Highlight a square on click
+    function highlightSquare(event) {
+      if (lastHighlighted) {
+        lastHighlighted.classList.remove("highlight");
+      }
+      const square = event.target;
+      square.classList.add("highlight");
+      lastHighlighted = square;
+      console.log(`Clicked square: ${square.dataset.col}${square.dataset.row}`);
+    }
+
+    // Toggle between light and dark themes
+    function toggleTheme() {
+      isDarkTheme = !isDarkTheme;
+      const squares = document.querySelectorAll("td:not(.label)");
+      squares.forEach(square => {
+        if (square.classList.contains("black")) {
+          square.classList.toggle("black", !isDarkTheme);
+          square.classList.toggle("black-dark", isDarkTheme);
+        } else if (square.classList.contains("white")) {
+          square.classList.toggle("white", !isDarkTheme);
+          square.classList.toggle("white-dark", isDarkTheme);
+        }
+      });
+    }
+  </script>
+</body>
+</html>

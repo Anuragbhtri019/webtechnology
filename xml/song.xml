@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<songs>
+    <song>
+        <name>Shape of You</name>
+        <singer>Ed Sheeran</singer>
+        <compose_by>Ed Sheeran, Steve Mac, Johnny McDaid</compose_by>
+        <length>4:23</length>
+    </song>
+    <song>
+        <name>Believer</name>
+        <singer>Imagine Dragons</singer>
+        <compose_by>Dan Reynolds, Wayne Sermon, Ben McKee, Daniel Platzman</compose_by>
+        <length>3:01</length>
+    </song>
+    <song>
+        <name>Cheap Thrills</name>
+        <singer>Sia</singer>
+        <compose_by>Sia Furler, Greg Kurstin</compose_by>
+        <length>5:56</length>
+    </song>
+    <song>
+        <name>Not Like Us</name>
+        <singer>Kendrick Lamar</singer>
+        <compose_by>Kendrick Lamar</compose_by>
+        <length>5:55</length>
+    </song>
+</songs>

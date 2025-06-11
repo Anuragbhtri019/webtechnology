@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LokSewa Aayog</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            height: 500px;
+        }
+        .form-container {
+            width: 50%;
+            margin: auto;
+            border: 1px solid #ddd;
+            padding: 50px 30px;
+            border-radius: 15px;
+        }
+        .heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .name {
+            font-size: 20px;
+            font-weight: 700;
+        }
+        .image-container img {
+            height: 80px;
+            width: auto;
+        }
+        .logoName {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        .field-group {
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+        .field-group label {
+            margin-bottom: 4px;
+            font-weight: bold;
+        }
+        .required {
+            color: red;
+        }
+        .subfield-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        .field-group.email {
+            grid-column: span 2;
+        }
+        .buttons {
+            display: flex;
+            flex: 1;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        .buttons button {
+            padding: 12px 25px;
+            border-radius: 5px;
+        }
+        .Login {
+            border: 1px solid blue;
+            outline: none;
+            color: blue;
+            background-color: transparent;
+        }
+        .Submit {
+            background-color: blue;
+            color: white;
+            border: none;
+        }
+        input {
+            padding: 10px 12px;
+        }
+        .field-group select {
+            padding: 10px 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <form action="#" method="get">
+            <div class="heading">
+                <div class="logoName">
+                    <div class="image-container">
+                        <img src="..//images/govlogo_new.png" alt="logo">
+                    </div>
+                    <div class="name">
+                        Public Service Commission
+                    </div>
+                </div>
+                <div class="lang">
+                    <select id="language" name="language">
+                        <option value="">ENG</option>
+                        <option value="nepali">NEP</option>
+                    </select>
+                </div>
+            </div>
+            <h1>Register</h1>
+            <div class="group">
+                <div class="field-group">
+                    <label for="fname">First name <span class="required">*</span></label>
+                    <input type="text" name="fname" id="fname" required>
+                </div>
+                <div class="field-group">
+                    <label for="mname">Middle name</label>
+                    <input type="text" name="mname" id="mname">
+                </div>
+                <div class="field-group">
+                    <label for="lname">Last name <span class="required">*</span></label>
+                    <input type="text" name="lname" id="lname" required>
+                </div>
+                <div class="field-group">
+                    <label for="uname">Username <span class="required">*</span></label>
+                    <input type="text" name="uname" id="uname" required>
+                </div>
+                <div class="field-group">
+                    <label for="dobbs">Date Of Birth (B.S.) <span class="required">*</span></label>
+                    <input type="date" name="dobbs" id="dobbs" required>
+                </div>
+                <div class="field-group">
+                    <label for="dobad">Date Of Birth (A.D.) <span class="required">*</span></label>
+                    <input type="date" name="dobad" id="dobad" required>
+                </div>
+                <div class="field-group">
+                    <label for="gender-type">Gender <span class="required">*</span></label>
+                    <div class="subfield-container">
+                        <div class="sub-group">
+                            <input type="radio" id="male" name="gender">
+                            <label for="male">Male</label>
+                        </div>
+                        <div class="sub-group">
+                            <input type="radio" id="female" name="gender">
+                            <label for="female">Female</label>
+                        </div>
+                        <div class="sub-group">
+                            <input type="radio" id="other" name="gender">
+                            <label for="other">Other</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="field-group email">
+                    <label for="email">Email <span class="required">*</span></label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+                <div class="field-group">
+                    <label for="phone">Mobile Number <span class="required">*</span></label>
+                    <input type="tel" name="phone" id="phone" required>
+                </div>
+                <div class="field-group">
+                    <label for="NID">National ID</label>
+                    <input type="number" name="NID" id="NID" required>
+                </div>
+                <div class="field-group">
+                    <label for="CN">Citizenship Number</label>
+                    <input type="number" name="CN" id="CN" required>
+                </div>
+                <div class="field-group">
+                    <label for="CNdate">Citizenship Issue District <span class="required">*</span></label>
+                    <select id="CNdate" name="CNdate">
+                        <option value="">Choose Option </option>
+                        <option value="pokhara">PKR</option>
+                        <option value="dang">Dang</option>
+                    </select>
+                </div>
+                <div class="field-group">
+                    <label for="CNdatebs">Citizenship Issue Date (B.S.) <span class="required">*</span></label>
+                    <input type="date" name="CNdatebs" id="CNdatebs" required>
+                </div>
+                <div class="field-group">
+                    <label for="CNdatead">Citizenship Issue Date (A.D.) <span class="required">*</span></label>
+                    <input type="date" name="CNdatead" id="CNdatead" required>
+                </div>
+            </div>
+            <div class="buttons">
+                <div>
+                    <button type="button" class="Login">Back to Login</button>
+                </div>
+                <div>
+                    <button type="button" class="Submit">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

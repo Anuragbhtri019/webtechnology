@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anurag Bhattarai CV</title>
+    <style>
+        /* Reset default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .cv-container {
+            max-width: 900px;
+            margin: 20px auto;
+            background: #fff;
+            display: flex;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Sidebar (Left Column) - Light Blue Background */
+        .sidebar {
+            width: 35%; /* Increased width to 35% for better fit */
+            background-color: #e6f0ff;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Align content to the top */
+            align-items: flex-end; /* Align content to the right */
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 0 15px 0; /* Position more toward top-left with no top margin */
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #007BFF;
+            margin-bottom: 5px; /* Reduced margin for closer alignment */
+            text-transform: uppercase;
+            text-align: right; /* Align name to the right */
+            padding-right: 10px; /* Add padding for spacing */
+        }
+
+        .title {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 20px;
+            text-align: right; /* Align title to the right */
+            padding-right: 10px; /* Add padding for spacing */
+        }
+
+        .contact-info, .interests {
+            margin-top: 15px; /* Adjusted margin for better spacing */
+        }
+
+        .contact-info p, .interests h2 {
+            margin: 5px 0; /* Reduced margin for tighter spacing */
+            font-size: 1em;
+            color: #444;
+            text-align: right; /* Align content to the right */
+            display: block; /* Use block for title to ensure it stays on its own line */
+            padding-right: 10px; /* Add padding for spacing */
+        }
+
+        .contact-info .email-line {
+            display: flex; /* Use flexbox for horizontal alignment */
+            justify-content: flex-end; /* Align to the right */
+            align-items: center; /* Vertically center the icon and text */
+            gap: 5px; /* Space between icon and text */
+        }
+
+        .contact-info i, .interests i {
+            color: #007BFF;
+            margin-right: 0; /* Removed margin for cleaner spacing with flex */
+        }
+
+        .interests h2 {
+            font-size: 2em; /* Increased size of "INTERESTS" text */
+            color: #007BFF;
+            text-transform: uppercase;
+        }
+
+        .interests .icons {
+            display: flex;
+            justify-content: flex-end; /* Align icons to the right */
+            gap: 10px; /* Space between icons */
+            margin-top: 5px; /* Add space below the title */
+        }
+
+        .social-links {
+            margin-top: 15px;
+            display: flex;
+            justify-content: flex-end; /* Align social icons to the right */
+            gap: 10px;
+        }
+
+        .social-links a {
+            color: #007BFF;
+            font-size: 1.5em;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #0056b3;
+        }
+
+        /* Main Content (Right Column) */
+        .main-content {
+            width: 65%; /* Adjusted width to accommodate larger sidebar */
+            padding: 20px;
+            background-color: #fff; /* White background for consistency */
+        }
+
+        /* Section Styling - Enhanced for Appeal */
+        section {
+            margin: 20px 0; /* Adjusted margin for tighter spacing */
+            padding: 15px; /* Added padding for visual separation */
+            background-color: #fff; /* White background for sections */
+            border: 1px solid #e6f0ff; /* Light blue border for subtle contrast */
+            border-radius: 4px; /* Slight rounding for a modern look */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #007BFF;
+            margin-bottom: 10px; /* Adjusted margin for closer alignment */
+            text-transform: uppercase;
+            border-bottom: 1px solid #007BFF; /* Thinner bottom border for subtlety */
+            padding-bottom: 5px;
+        }
+
+        p, ul {
+            margin: 8px 0; /* Adjusted margin for better spacing */
+            font-size: 1em; /* Consistent font size for readability */
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        /* Skills Progress Styling */
+        .skills ul li {
+            margin: 12px 0; /* Reduced margin for tighter spacing */
+        }
+
+        .skills ul li::after {
+            content: '';
+            display: block;
+            height: 10px;
+            background: #ddd;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        .skills ul li:nth-child(1)::after { /* Web Development - 40% */
+            width: 40%;
+            background: #007BFF;
+        }
+
+        .skills ul li:nth-child(2)::after { /* Communication - 81% */
+            width: 81%;
+            background: #007BFF;
+        }
+
+        .skills ul li:nth-child(3)::after { /* Time Management - 55% */
+            width: 55%;
+            background: #007BFF;
+        }
+
+        .skills ul li:nth-child(4)::after { /* Chatbots Prompt - 60% */
+            width: 60%;
+            background: #007BFF;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .cv-container {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .sidebar, .main-content {
+                width: 100%;
+            }
+
+            .sidebar {
+                align-items: center; /* Center align on mobile */
+                text-align: center; /* Center align text on mobile */
+            }
+
+            h1, .title, .contact-info p, .contact-info .email-line, .interests h2, .interests .icons {
+                text-align: center; /* Center align text on mobile */
+                padding-right: 0; /* Remove padding on mobile */
+                justify-content: center; /* Center content on mobile */
+            }
+
+            .social-links {
+                justify-content: center; /* Center social icons on mobile */
+            }
+
+            .profile-img {
+                width: 120px;
+                height: 120px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .social-links, .interests .icons {
+                gap: 8px;
+            }
+
+            .social-links a, .interests i {
+                font-size: 1.2em;
+            }
+
+            section {
+                margin: 15px 0;
+                padding: 10px;
+            }
+        }
+    </style>
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="cv-container">
+        <!-- Sidebar (Left Column) -->
+        <div class="sidebar">
+            <img src="../images/profile.jpg" alt="Profile Picture" class="profile-img">
+            <h1>Anurag Bhattarai</h1>
+            <p class="title">Student</p>
+            <div class="contact-info">
+                <p><i class="fas fa-phone"></i> +9842865369</p>
+                <p class="email-line"><i class="fas fa-envelope"></i>
+                             anuragbhattarai019@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Tansen, Palpa - Nepal</p>
+                <div class="social-links">
+                    <a href="https://github.com/Anuragbhtri019" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/anurag_bhattarai_019/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/anurag-bhattarai-6287a6287/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="interests">
+                <h2>Interests</h2>
+                <div class="icons">
+                    <i class="fas fa-laptop-code"></i> <!-- Technology/Web Development -->
+                    <i class="fas fa-robot"></i> <!-- AI/Chatbots -->
+                    <i class="fas fa-futbol"></i> <!-- Football -->
+                    <i class="fas fa-users"></i> <!-- Team Activities -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content (Right Column) -->
+        <div class="main-content">
+            <!-- About Me -->
+            <section class="summary">
+                <h2>About Me</h2>
+                <p>
+                    I am Anurag Bhattarai, a student who aims to find an exciting and challenging role in the Information Technology industry. I am eager to utilize my knowledge and skills to assist the company in achieving its goals, drive my personal growth, and improve my abilities to become a valuable asset in achieving the company’s mission and objectives.
+                </p>
+            </section>
+
+            <!-- Education -->
+            <section class="education">
+                <h2>Education</h2>
+                <p><strong>2022 - Present: Bachelor of Science (CSIT)</strong> - Nagarjuna College of IT, Sankhamul, Lalitpur (Currently)</p>
+                <p><strong>2019 - 2022: +2 Science</strong> - St. Xavier's College, Maitighar, Kathmandu</p>
+                <p><strong>2019: School Level</strong> - River Valley Eng Secondary School, Tansen, Palpa</p>
+            </section>
+
+            <!-- Skills -->
+            <section class="skills">
+                <h2>Skills</h2>
+                <ul>
+                    <li>Web Development - 40%</li>
+                    <li>Communication - 81%</li>
+                    <li>Time Management - 55%</li>
+                    <li>Chatbots Prompt - 60%</li>
+                </ul>
+            </section>
+
+            <!-- Expertise -->
+            <section class="expertise">
+                <h2>Expertise</h2>
+                <ul>
+                    <li>Communication</li>
+                    <li>Negotiation</li>
+                    <li>Critical Thinking</li>
+                    <li>Leadership</li>
+                    <li>Web Development</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

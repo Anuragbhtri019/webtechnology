@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<books>
+    <book isbn="978-0-7475-3269-9">
+        <name>
+            <firstName>John</firstName>
+            <middleName>Robert</middleName>
+            <lastName>Doe</lastName>
+        </name>
+        <email>john.doe@example.com</email>
+        <author>J.K. Rowling</author>
+        <author>Robert Galbraith</author>
+        <page_no>450</page_no>
+        <price>29.99</price>
+    </book>
+    <book isbn="978-1-86197-876-9">
+        <name>
+            <firstName>Jane</firstName>
+            <middleName>Marie</middleName>
+            <lastName>Smith</lastName>
+        </name>
+        <email>jane.smith@example.com</email>
+        <author>George Orwell</author>
+        <page_no>328</page_no>
+        <price>15.50</price>
+    </book>
+</books>

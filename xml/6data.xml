@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="6data.xsl"?>
+<library>
+    <books>
+        <book>
+            <title>Web Programming</title>
+            <author>Chrisbates</author>
+            <publisher>Wiley</publisher>
+            <edition>3</edition>
+            <price>300</price>
+        </book>
+        <book>
+            <title>Internet world-wide-web</title>
+            <author>Ditel</author>
+            <publisher>Pearson</publisher>
+            <edition>3</edition>
+            <price>400</price>
+        </book>
+        <book>
+            <title>Computer Networks</title>
+            <author>Forouzan</author>
+            <publisher>Mc Graw Hill</publisher>
+            <edition>5</edition>
+            <price>700</price>
+        </book>
+        <book>
+            <title>DBMS Concepts</title>
+            <author>Navath</author>
+            <publisher>Oxford</publisher>
+            <edition>5</edition>
+            <price>600</price>
+        </book>
+        <book>
+            <title>Linux Programming</title>
+            <author>Subhitab Das</author>
+            <publisher>Oxford</publisher>
+            <edition>8</edition>
+            <price>300</price>
+        </book>
+    </books>
+
+    <students>
+        <student>
+            <name>Ramesh</name>
+            <address>Kathmandu</address>
+            <roll_no>7</roll_no>
+            <batch>2075</batch>
+        </student>
+        <student>
+            <name>Rajesh</name>
+            <address>Lalitpur</address>
+            <roll_no>77</roll_no>
+            <batch>2059</batch>
+        </student>
+    </students>
+</library>

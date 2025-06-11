@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Events and jQuery Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f0f0f0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    #log {
+      margin: 20px 0;
+      padding: 10px;
+      background-color: #e0e0e0;
+      border-radius: 5px;
+      min-height: 100px;
+    }
+    #demoBox {
+      width: 100px;
+      height: 100px;
+      background-color: #ff4500;
+      margin: 20px auto;
+      cursor: pointer;
+      text-align: center;
+      line-height: 100px;
+      color: white;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 5px;
+      border: none;
+      background-color: #333;
+      color: white;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h3>JavaScript Events and jQuery Demo</h3>
+
+    <h2>Event Logs</h2>
+    <div id="log"></div>
+
+    <h2>jQuery Demo</h2>
+    <div id="demoBox">Click Me!</div>
+    <button id="animateBtn">Animate Box</button>
+    <button id="resetBtn">Reset Box</button>
+  </div>
+
+  <!-- Include jQuery via CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script>
+    // Function to log messages
+    function logMessage(message) {
+      const logDiv = document.getElementById("log");
+      const p = document.createElement("p");
+      p.textContent = `${new Date().toLocaleTimeString()}: ${message}`;
+      logDiv.appendChild(p);
+      logDiv.scrollTop = logDiv.scrollHeight; // Auto-scroll to bottom
+    }
+
+    // Vanilla JavaScript: DOMContentLoaded event
+    document.addEventListener("DOMContentLoaded", function() {
+      logMessage("DOMContentLoaded event fired - DOM is fully parsed.");
+    });
+
+    // Vanilla JavaScript: window.onload event
+    window.onload = function() {
+      logMessage("window.onload event fired - All resources are fully loaded.");
+    };
+
+    // jQuery: $(document).ready() event
+    $(document).ready(function() {
+      logMessage("jQuery $(document).ready() event fired - DOM is ready.");
+
+      // jQuery Demo: DOM manipulation, event handling, and animation
+      const $demoBox = $("#demoBox");
+
+      // Click event on the box
+      $demoBox.on("click", function() {
+        $(this).css("background-color", "#00ff00"); // Change color to green
+        logMessage("Demo box clicked - Changed color to green.");
+      });
+
+      // Animate button click
+      $("#animateBtn").on("click", function() {
+        $demoBox.animate({
+          width: "200px",
+          height: "200px",
+          opacity: 0.5,
+          marginLeft: "50px"
+        }, 1000, function() {
+          logMessage("Animation completed - Box resized and moved.");
+        });
+      });
+
+      // Reset button click
+      $("#resetBtn").on("click", function() {
+        $demoBox.animate({
+          width: "100px",
+          height: "100px",
+          opacity: 1,
+          marginLeft: "0px"
+        }, 500).css("background-color", "#ff4500");
+        logMessage("Box reset to original state.");
+      });
+    });
+  </script>
+</body>
+</html>

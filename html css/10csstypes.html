@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Types of CSS </title>
+
+    <!-- Internal CSS -->
+    <style>
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .internal-box {
+            background-color: #3498db;
+            color: white;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+
+    <!-- External CSS Link -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Inline CSS -->
+    <div style="background-color: #e74c3c; color: white; padding: 20px; margin: 10px; border-radius: 5px; text-align: center;">
+        This box uses Inline CSS .
+    </div>
+
+    <!-- Internal CSS -->
+    <h1>CSS Types Demonstration</h1>
+    <div class="internal-box">
+        This box uses Internal CSS .
+    </div>
+
+    <!-- External CSS -->
+    <div class="external-box">
+        This box uses External CSS .
+    </div>
+</body>
+</html>

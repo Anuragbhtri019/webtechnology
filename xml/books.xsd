@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- Define the root element -->
+    <xs:element name="books">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="book" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <!-- Name with first, middle, and last names -->
+                            <xs:element name="name" minOccurs="1" maxOccurs="1">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="firstName" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                                        <xs:element name="middleName" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                                        <xs:element name="lastName" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+
+                            <!-- Email with pattern restriction -->
+                            <xs:element name="email" minOccurs="1" maxOccurs="1">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+
+                            <!-- Multiple authors allowed -->
+                            <xs:element name="author" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+
+                            <!-- Page number (optional) -->
+                            <xs:element name="page_no" minOccurs="0" maxOccurs="1">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:integer">
+                                        <xs:minInclusive value="1"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+
+                            <!-- Price with max limit of 600 -->
+                            <xs:element name="price" minOccurs="1" maxOccurs="1">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:decimal">
+                                        <xs:minInclusive value="0.00"/>
+                                        <xs:maxInclusive value="600.00"/>
+                                        <xs:fractionDigits value="2"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                        </xs:sequence>
+                        <!-- ISBN as attribute -->
+                        <xs:attribute name="isbn" use="required">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:pattern value="\d{3}-\d-\d{3}-\d{5}-\d"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
